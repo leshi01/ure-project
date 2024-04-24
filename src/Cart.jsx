@@ -31,16 +31,18 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
                 flexWrap: 'wrap',
                 '& > :not(style)': {
                 m: 1,
-                width: "70%",
-                height: 650,
+                width: "30%",
+                height: 580,
+                top: 0,
+                position: 'fixed',
                 fontFamily: "'Times New Roman', Times, serif",
                 },
             }}
         >
-        <Paper elevation={15} sx={{ position: "static", overflow: "auto", top: 20,}}>
+        <Paper elevation={15} sx={{maxHeight: "100%", position: "static", overflow: "auto", top: 20,}}>
             <div className='cart-header'>
                 <CartIcon totalItems={totalItems} />
-                <p className='cart-header-text'>Shoping Cart</p>
+                <p className='cart-header-text'>Main Order</p>
                 
             </div>
             <Divider />
@@ -66,32 +68,15 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
             })}
 
             <Divider sx={{marginTop: 3}}/>
-            <footer className='cart-footer'>
+            <div className='cart-footer'>
 
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        '& > :not(style)': {
-                        m: 1,
-                        width: 230,
-                        height: 50,
-                        marginLeft: 4,
-                        marginTop: 2,
-                        fontSize:35,
-                        fontFamily: "'Times New Roman', Times, serif",
-                        textAlign: "center",
-                        },
-                    }}
-                    >
+                <Paper elevation={10} sx={{fontSize:"250%",minWidth: "55%", maxHeight: "60%", marginTop: 2, marginLeft:4, textAlign:"center"}}> <b>Total: ${total.toFixed(1)}</b> </Paper>      
 
-                    <Paper elevation={10}> <b>Total: ${total.toFixed(1)}</b> </Paper>
-                    
-                </Box>
-                <Button variant="contained" size='small' color="success" sx={{ maxHeight: 50, minWidth:100, borderRadius: 10, marginTop: 2,marginLeft:7}}>
+                <Button variant="contained" size='small' color="success" sx={{fontSize:20, maxHeight: "60%", minWidth:"25%",marginTop: 2, marginLeft:4,  borderRadius: 7}}>
                     Order
                 </Button>
-            </footer>
+
+            </div>
         </Paper>
         </Box>
     );

@@ -4,6 +4,7 @@ import * as React from 'react';
 import ChoseCategory from "./ChoseCategory";
 import Cart from "./Cart";
 import CartElements from './CartElements';
+import ClientInfo from "./ClientInfo";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <Cart totalItems={totalItems} setTotalItems={setTotalItems} elements={elements} handlesetElements={handlesetElements}/>
       <ChoseCategory categories={categories} categ={categ} handleCategory={handleCategory} />
       <Display  category={categ} updateTotalItems={updateTotalItems} handlesetElements={handlesetElements}/>
+      <ClientInfo />
     </>
 
   );

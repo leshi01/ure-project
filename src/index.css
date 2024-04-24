@@ -29,7 +29,7 @@
 
 .chose-category{
   position: relative;
-  top: 10px;
+  top: 650px;
   left: 95%;
   margin: auto;
   margin-top: -630px;
@@ -38,6 +38,8 @@
 .elements{
   position: relative;
   left: 83%;
+  top: 650px;
+  margin-bottom: 10px;
 }
 
 .cart-container{
@@ -55,13 +57,16 @@
 .cart-header-text{
   position: relative;
   left: 25%;
-  font-size: 22px;
+  font-size: 30px;
+  margin-top: 15px;
   font-family:'Times New Roman', Times, serif;
 }
 
 .cart-header{
   display: flex;
   position: sticky;
+  height: 13%;
+  text-align: center;
   top: 0;
   z-index: 999;
   background-color: #edecec;
@@ -87,10 +92,17 @@
 
 .cart-footer{
   display: flex;
-  height: 80px;
-  position:sticky;
-  bottom: 0;
-  width: 100%;
+  height: 12%;
+  position:fixed;
+  border-radius: 8px;
+  bottom: 45px;
+  width: 30%;
   z-index: 999;
   background-color: #edecec;
+}
+
+.client-textfield{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
