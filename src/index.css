@@ -41,7 +41,7 @@
 }
 
 .cart-container{
-  position: sticky;
+  position: static;
   
   top: 20px;
   left: 40px;
@@ -86,11 +86,11 @@
 }
 
 .cart-footer{
-  
   display: flex;
   height: 80px;
-  position: sticky;
+  position:sticky;
   bottom: 0;
+  width: 100%;
   z-index: 999;
   background-color: #edecec;
 }

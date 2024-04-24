@@ -12,7 +12,6 @@ import Box from '@mui/material/Box';
 import CartElements from './CartElements';
 
 
-
 function Cart({totalItems, setTotalItems, elements, handlesetElements}){
 
     let total = 0;
@@ -26,9 +25,19 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
         }
     };
 
-
     return(
-        <div className="cart-container">
+        <Box sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                '& > :not(style)': {
+                m: 1,
+                width: "70%",
+                height: 650,
+                fontFamily: "'Times New Roman', Times, serif",
+                },
+            }}
+        >
+        <Paper elevation={15} sx={{ position: "static", overflow: "auto", top: 20,}}>
             <div className='cart-header'>
                 <CartIcon totalItems={totalItems} />
                 <p className='cart-header-text'>Shoping Cart</p>
@@ -76,14 +85,15 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
                     }}
                     >
 
-                    <Paper elevation={3}> <b>Total: ${total}</b> </Paper>
+                    <Paper elevation={10}> <b>Total: ${total.toFixed(1)}</b> </Paper>
                     
                 </Box>
                 <Button variant="contained" size='small' color="success" sx={{ maxHeight: 50, minWidth:100, borderRadius: 10, marginTop: 2,marginLeft:7}}>
                     Order
                 </Button>
             </footer>
-        </div>
+        </Paper>
+        </Box>
     );
 }
 
