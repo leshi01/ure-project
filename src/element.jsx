@@ -28,7 +28,24 @@ function Element({name, price, description, updateTotalItems, elements}){
             updateTotalItems(counter);
             setCounter(0);
             setTotalPrice(0);
-            elements.push({ name: name, count: counter, totalPrice: totalPrice });
+
+            if(elements.length === 0){
+                elements.push({ name: name, count: counter, totalPrice: totalPrice });
+            }
+            else{
+                let found = false;
+                {elements.map((item) => {
+                    if (item.name === name) {
+                        item.count += counter;
+                        item.totalPrice += totalPrice;
+                        found = true;
+                    }
+                })}
+                if (!found) {
+                    elements.push({ name: name, count: counter, totalPrice: totalPrice });
+                }
+            }
+            
         }
     };
 
