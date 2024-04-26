@@ -14,7 +14,7 @@ function ClientInfo(){
                 m: 1,
                 width: "30%",
                 height: 400,
-                top: 0,
+                top: 130,
                 left: "68%",
                 position: 'fixed',
                 fontFamily: "'Times New Roman', Times, serif",
