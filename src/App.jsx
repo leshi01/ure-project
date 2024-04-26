@@ -15,10 +15,6 @@ function App() {
   const [elements, setElements] = React.useState(CartElements);
 
   const handlesetElements = (index) => {
-    setElements(CartElements);
-    console.log(CartElements);
-    console.log(elements);
-
     const updatedElements = elements.filter((_, i) => i !== index);
     setElements(updatedElements);
   };
@@ -39,7 +35,7 @@ function App() {
     <>
       <Cart totalItems={totalItems} setTotalItems={setTotalItems} elements={elements} handlesetElements={handlesetElements}/>
       <ChoseCategory categories={categories} categ={categ} handleCategory={handleCategory} />
-      <Display  category={categ} updateTotalItems={updateTotalItems} handlesetElements={handlesetElements}/>
+      <Display  category={categ} updateTotalItems={updateTotalItems} handlesetElements={handlesetElements} elements={elements}/>
       <ClientInfo />
     </>
 

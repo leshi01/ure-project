@@ -1,7 +1,7 @@
 import Data from "./Data"
 import Element from "./element"
 
-function Display({category, updateTotalItems}){
+function Display({category, updateTotalItems, elements}){
       
     
 
@@ -23,7 +23,7 @@ function Display({category, updateTotalItems}){
                     description={item.description}
                     category={item.category}
                     updateTotalItems={updateTotalItems}
-                    
+                    elements={elements}
                 />
             ))}
         </>

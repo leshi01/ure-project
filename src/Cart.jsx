@@ -9,9 +9,6 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 
-import CartElements from './CartElements';
-
-
 function Cart({totalItems, setTotalItems, elements, handlesetElements}){
 
     let total = 0;

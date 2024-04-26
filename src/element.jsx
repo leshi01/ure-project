@@ -5,16 +5,11 @@ import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
-import CartElements from './CartElements';
 
 
-
-
-function Element({name, price, description, updateTotalItems}){
+function Element({name, price, description, updateTotalItems, elements}){
     const [counter, setCounter] = React.useState(0);
     const [totalPrice, setTotalPrice] = React.useState(0);
-    
-
 
     const handleMinus = () => {
         if(counter > 0){
@@ -30,11 +25,10 @@ function Element({name, price, description, updateTotalItems}){
 
     const handleAdd = () => {
         if(counter > 0){
-            CartElements.push({ name: name, count: counter, totalPrice: totalPrice });
             updateTotalItems(counter);
             setCounter(0);
             setTotalPrice(0);
-            
+            elements.push({ name: name, count: counter, totalPrice: totalPrice });
         }
     };
 
