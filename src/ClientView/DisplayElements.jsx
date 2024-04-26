@@ -1,4 +1,4 @@
-import Data from "./Data"
+import Data from "../Data"
 import Element from "./element"
 
 function Display({category, updateTotalItems, elements}){

@@ -106,3 +106,8 @@
   flex-direction: column;
   padding: 20px;
 }
+
+.data-grid{
+  position: relative;
+  left: 40%;
+}
