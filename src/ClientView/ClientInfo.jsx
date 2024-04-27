@@ -13,8 +13,8 @@ function ClientInfo(){
                 '& > :not(style)': {
                 m: 1,
                 width: "30%",
-                height: 400,
-                top: 130,
+                height: 500,
+                top: 100,
                 left: "68%",
                 position: 'fixed',
                 fontFamily: "'Times New Roman', Times, serif",
@@ -40,6 +40,13 @@ function ClientInfo(){
                 <br></br>
                 <TextField
                     required
+                    id="filled-required"
+                    label="Table number"
+                    variant="filled"
+                />
+                <br></br>
+                <TextField
+                    required
                     id="filled-number"
                     label="Number of people"
                     type="number"
@@ -48,7 +55,6 @@ function ClientInfo(){
                 />
                 <br></br>
                 <TextField
-                    required
                     id="filled-helperText"
                     label="Description"
                     variant="filled"
