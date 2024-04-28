@@ -1,16 +1,15 @@
-import Data from "../Data"
 import Element from "./element"
 
-function Display({category, updateTotalItems, elements}){
+function Display({category, updateTotalItems, elements,menuItems}){
       
     
 
     let filteredData; 
 
     if(category === 'All'){
-        filteredData = Data.filter(item => item.category);
+        filteredData = menuItems.filter(item => item.category);
     }else{
-        filteredData = Data.filter(item => item.category === category);
+        filteredData = menuItems.filter(item => item.category === category);
     }
 
     return(

@@ -6,7 +6,8 @@ import Cart from "./Cart";
 import CartElements from './CartElements';
 import ClientInfo from "./ClientInfo";
 
-function CView(){
+function CView({menuItems}){
+    console.log(menuItems);
 
     const categories = ["Coffee", "Desserts", "Lunch", "Breakfast", "Juice", "Drinks"];
     const [categ, setCateg] = React.useState('All');
@@ -26,13 +27,14 @@ function CView(){
 
     const handleCategory = (event) => {
         setCateg(event.target.value);
+        console.log(menuItems);
     };
 
     return(
         <>
             <Cart totalItems={totalItems} setTotalItems={setTotalItems} elements={elements} handlesetElements={handlesetElements}/>
             <ChoseCategory categories={categories} categ={categ} handleCategory={handleCategory} />
-            <Display  category={categ} updateTotalItems={updateTotalItems} handlesetElements={handlesetElements} elements={elements}/>
+            <Display  category={categ} updateTotalItems={updateTotalItems} handlesetElements={handlesetElements} elements={elements} menuItems={menuItems}/>
             <ClientInfo />
         </>
     );

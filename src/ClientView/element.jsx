@@ -69,9 +69,9 @@ function Element({name, price, description, updateTotalItems, elements}){
                 <Box sx={{ p: 2}}>
                     <div className='main-footer'>
                         <div className='element-footer'>
-                            <text className='element-text'><b>No:</b> {counter}</text>
-                            <Button size="small" sx={{fontSize:15, maxWidth: '20px', marginTop: 0.5, minWidth: '30px'}} variant="outlined"  onClick={handlePlus}>+</Button>
-                            <Button size="small" sx={{fontSize:15, marginLeft: 1, marginTop: 0.5, maxWidth: '20px', minWidth: '30px'}}  variant="outlined"  onClick={handleMinus}>-</Button>
+                            <Typography sx={{position: "relative", top: "10%", fontSize: 18}}><b>No:</b> {counter}</Typography>
+                            <Button size="small" sx={{position: "relative", left: 110,top:-22 ,fontSize:15, maxWidth: '20px',  minWidth: '30px'}} variant="outlined"  onClick={handlePlus}>+</Button>
+                            <Button size="small" sx={{position: "relative", left: 40,top:-22 ,fontSize:15,  maxWidth: '20px', minWidth: '30px'}}  variant="outlined"  onClick={handleMinus}>-</Button>
                         </div>
                         <Button color="secondary"  sx={{color:"green", fontSize: 20, width: 50, marginLeft:5}} onClick={handleAdd}> Add </Button>
                         

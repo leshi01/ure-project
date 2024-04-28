@@ -45,7 +45,7 @@ function SignIn({ userLogIn }) {
     };
 
     return (
-        <Box sx={{ position: 'relative', left:"75%", top: 100, alignItems: 'center', minHeight: '100vh' }}>
+        <Box sx={{ position: 'relative', left:"75%", top: 50, alignItems: 'center', minHeight: '100vh' }}>
             <Paper elevation={10} sx={{ p: 4, maxWidth: 400, width: '100%' }}>
                 <Container component="main" maxWidth="xs">
                     <Box
@@ -89,6 +89,7 @@ function SignIn({ userLogIn }) {
                                 label="Terms and conditions"
                             />
                             <Button
+                                type='button'
                                 fullWidth
                                 variant="contained"
                                 onClick={() => handleLogIn(formData.username, formData.password)}

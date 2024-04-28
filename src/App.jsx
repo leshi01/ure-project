@@ -1,31 +1,38 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import SignIn from './SignIn';
 import Data from './Data';
 import CView from './ClientView/CView';
 import OView from './OwnerView/OView';
 
 function App() {
-  const [userData, setUserData] = React.useState(Data);
+  const [menuItems, setmenuItems] = React.useState(Data);
+  const navigate = useNavigate();
+
+  const menuChange = (newMenu) => {
+    setmenuItems(newMenu);
+  }
 
   const userLogIn = (name, pass) => {
     if (name === "admin" && pass === "admin") {
-      window.location.href = '/oview'; 
+      navigate('/oview'); 
     }else{
-      window.location.href = '/cview';
+      navigate('/cview'); 
     }
   }
 
+  const goToLoginPage = () => {
+    navigate('/loginPage'); 
+  }
+
   return (
-    <Router>
       <div className='main-page'>
         <Routes>
-          <Route path="/" element={<SignIn userLogIn={userLogIn}  />} />
-          <Route path="/cview" element={<CView userData={userData} setUserData={setUserData} />} />
-          <Route path="/oview/*" element={<OView userData={userData} setUserData={setUserData} />} />
+          <Route path="/loginPage" element={<SignIn userLogIn={userLogIn} />} />
+          <Route path="/cview" element={<CView menuItems={menuItems} />} />
+          <Route path="/oview/*" element={<OView menuItems={menuItems} menuChange={menuChange} goToLoginPage={goToLoginPage}/>} />
         </Routes>
       </div>
-    </Router>
   );
 }
 

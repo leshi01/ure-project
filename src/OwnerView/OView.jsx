@@ -1,11 +1,15 @@
 import * as React from 'react';
 import DataGridDisplay from './DataGridDisplay';
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
   
-function OView(){
+function OView({menuItems, menuChange, goToLoginPage}){
+    console.log(menuItems);
+
     return(
         <>   
-            <DataGridDisplay/>
+
+            <button type='button' onClick={goToLoginPage}>LoginPage</button>
+            <DataGridDisplay menuItems={menuItems} menuChange={menuChange}/>
         </>
     );
 }
