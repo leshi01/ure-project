@@ -7,7 +7,6 @@ import CartElements from './CartElements';
 import ClientInfo from "./ClientInfo";
 
 function CView({menuItems}){
-    console.log(menuItems);
 
     const categories = ["Coffee", "Desserts", "Lunch", "Breakfast", "Juice", "Drinks"];
     const [categ, setCateg] = React.useState('All');

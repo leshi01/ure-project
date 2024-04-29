@@ -28,8 +28,16 @@ function DataGridDisplay({ menuItems, menuChange }) {
     };
 
     const handleDelete = () => {
-        const updatedRows = rows.filter((row) => row.id !== deleteId);
-        setRows(updatedRows);
+        const updatedRowsDelete = rows.filter((row) => row.id !== deleteId);
+
+        const updatedRowsId = updatedRowsDelete.map((row) => {
+          if (row.id > deleteId) {
+            return { ...row, id: row.id - 1 }; 
+          }
+          return row;
+        });
+      
+        setRows(updatedRowsId);
         handleClose();
     };
 
@@ -108,15 +116,6 @@ const Backdrop = React.forwardRef((props, ref) => {
   Backdrop.propTypes = {
     className: PropTypes.string.isRequired,
     open: PropTypes.bool,
-  };
-  
-  const blue = {
-    200: '#99CCFF',
-    300: '#66B2FF',
-    400: '#3399FF',
-    500: '#007FFF',
-    600: '#0072E5',
-    700: '#0066CC',
   };
   
   const grey = {
