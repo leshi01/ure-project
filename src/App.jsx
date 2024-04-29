@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import SignIn from './SignIn';
 import Data from './Data';
@@ -24,6 +24,7 @@ function App() {
   const goToLoginPage = () => {
     navigate('/loginPage'); 
   }
+
 
   return (
       <div className='main-page'>
