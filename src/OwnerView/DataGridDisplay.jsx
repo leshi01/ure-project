@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+import SaveIcon from '@mui/icons-material/Save';
 import IconButton from '@mui/material/IconButton';
 import { DataGrid } from '@mui/x-data-grid';
 import { Modal as BaseModal } from '@mui/material'; 
@@ -24,7 +25,7 @@ function DataGridDisplay({ menuItems, menuChange }) {
 
     const handleAdd = () => {
         const id = rows.length + 1;
-        setRows([...rows, { id, name: '', price: '', description: '', category: '' }]);
+        setRows([...rows, { id, name: 'new', price: 0, description: 'No', category: 'All' }]);
     };
 
     const handleDelete = () => {
@@ -41,6 +42,10 @@ function DataGridDisplay({ menuItems, menuChange }) {
         handleClose();
     };
 
+    const handleChange = () =>{
+
+    }
+
 
     React.useEffect(() => {
         menuChange(rows);
@@ -52,21 +57,20 @@ function DataGridDisplay({ menuItems, menuChange }) {
         { field: 'price', headerName: 'Price', type: 'number', width: 150, editable: true },
         { field: 'description', headerName: 'Description', editable: true, width: 300 },
         { field: 'category', headerName: 'Category', sortable: true, width: 160, editable: true },
-        {
-            field: 'actions',
-            headerName: '',
-            width: 50,
-            sortable: false,
+        { field: 'delete', headerName: '', width: 50, sortable: false,
             renderCell: (params) => (
-                <IconButton
-                    variant="inherit"
-                    color="primary"
-                    onClick={() => handleOpen(params.row.id)}
-                >
+                <IconButton variant="inherit" color="primary" onClick={() => handleOpen(params.row.id)} >
                     <DeleteIcon />
                 </IconButton>
             ),
         },
+        { field: 'save', headerName: '', width: 50, sortable: false,
+          renderCell: (params) => (
+              <IconButton variant="inherit" color="primary" onClick={() => handleChange(params.row.id)} >
+                <SaveIcon />
+              </IconButton>
+          ),
+      },
     ];
 
     return (
