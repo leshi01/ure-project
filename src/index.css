@@ -104,3 +104,12 @@
   position: relative;
   left: 40%;
 }
+
+.alert-div{
+  position: fixed;
+  width: 500px;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
