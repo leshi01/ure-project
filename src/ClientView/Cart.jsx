@@ -10,12 +10,22 @@ import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import CloseIcon from '@mui/icons-material/Close';
+import Receipt from './Receipt';
 
 
 
 function Cart({totalItems, setTotalItems, elements, handlesetElements}){
 
+    const [receiptElements, setReceiptElements] = React.useState([]);
+
     const [showAlert, setShowAlert] = useState(false);
+    const [showReceipt, setshowReceipt] = useState(false);
+
+
+    const updateReceipt = () =>{
+        setReceiptElements(prevElements => [...prevElements, ...elements]);
+    }
+
 
     let total = 0;
     
@@ -26,6 +36,12 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
             setTotalItems(totalItems-element.count);
         }
     };
+    
+    const emptyCartElements = () =>{
+        elements.map((element, index) => (
+            handleDelete(index, element)
+        ))
+    }
 
     const displayWarningAlert = () => {
         return (
@@ -57,7 +73,11 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
             setShowAlert(false);
             }, 5000);
         }else{
-            
+            updateReceipt();
+            setshowReceipt(true);
+            setTimeout(() => {
+                emptyCartElements();
+            }, 100);
         }
     }
 
@@ -65,6 +85,8 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
 
         <>
             {showAlert && displayWarningAlert()}
+            
+
         
             <Box sx={{
                     display: 'flex',
@@ -87,6 +109,7 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
                     
                 </div>
                 <Divider />
+                {showReceipt && <Receipt receiptElements={receiptElements}/>}
                 
                 {elements.map((element, index) => (
                     
