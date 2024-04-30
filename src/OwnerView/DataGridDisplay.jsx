@@ -4,15 +4,16 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import Agreement from './Agreement';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-import SaveIcon from '@mui/icons-material/Save';
 import IconButton from '@mui/material/IconButton';
-import { DataGrid } from '@mui/x-data-grid';
+import { GridRowModes, DataGrid, GridToolbarContainer, GridActionsCellItem, GridRowEditStopReasons, } from '@mui/x-data-grid';
 
 
 function DataGridDisplay({ menuItems, menuChange }) {
     const [rows, setRows] = useState(menuItems);
     const [open, setOpen] = React.useState(false);
     const [deleteId, setDeleteId] = React.useState("");
+    const [rowModesModel, setRowModesModel] = React.useState({});
+
 
     const handleOpen = (id) => {
         setOpen(true);
@@ -39,9 +40,15 @@ function DataGridDisplay({ menuItems, menuChange }) {
         handleClose();
     };
 
-    const handleChange = () =>{
-
-    }
+    const processRowUpdate = (newRow) => {
+        const updatedRow = { ...newRow, isNew: false };
+        setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
+        return updatedRow;
+    };
+    
+    const handleRowModesModelChange = (newRowModesModel) => {
+        setRowModesModel(newRowModesModel);
+    };
 
 
     React.useEffect(() => {
@@ -61,13 +68,6 @@ function DataGridDisplay({ menuItems, menuChange }) {
                 </IconButton>
             ),
         },
-        { field: 'save', headerName: '', width: 50, sortable: false,
-          renderCell: (params) => (
-              <IconButton variant="inherit" color="primary" onClick={() => handleChange(params.row.id)} >
-                <SaveIcon />
-              </IconButton>
-          ),
-      },
     ];
 
     return (
@@ -81,15 +81,15 @@ function DataGridDisplay({ menuItems, menuChange }) {
                     rows={rows}
                     columns={columnsWithActions}
                     pageSize={10}
+                    editMode="row"
+                    rowModesModel={rowModesModel}
+                    onRowModesModelChange={handleRowModesModelChange}
+                    processRowUpdate={processRowUpdate}
                     sx={{ backgroundColor: "white", textAlign: "center" }}
                 />
             </Box>
         </div>
     );
 }
-
-
-
-
 
 export default DataGridDisplay;
