@@ -54,7 +54,7 @@ function Element({name, price, description, updateTotalItems, elements}){
         <Paper elevation={15} sx={{
                         position: "relative",
                         left:"85%",
-                        top: 650,
+                        top: 70,
                         marginBottom: 10,
                         width:"50%",
                     }}>

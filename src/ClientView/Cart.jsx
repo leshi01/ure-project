@@ -94,8 +94,8 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
                     '& > :not(style)': {
                     m: 1,
                     width: "30%",
-                    height: 580,
-                    top: 0,
+                    height: 635,
+                    top: 50,
                     position: 'fixed',
                     fontFamily: "'Times New Roman', Times, serif",
                     },

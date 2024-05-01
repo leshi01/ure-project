@@ -8,7 +8,7 @@ import ClientInfo from "./ClientInfo";
 
 function CView({menuItems}){
 
-    const categories = ["Coffee", "Desserts", "Lunch", "Breakfast", "Juice", "Drinks"];
+    const categories = ["All","Coffee", "Desserts", "Lunch", "Breakfast", "Juice", "Drinks"];
     const [categ, setCateg] = React.useState('All');
     const [totalItems, setTotalItems] = React.useState(0);
     const [elements, setElements] = React.useState(CartElements);
@@ -26,7 +26,7 @@ function CView({menuItems}){
 
     const handleCategory = (event) => {
         setCateg(event.target.value);
-        console.log(menuItems);
+        console.log(categ);
     };
 
     return(
