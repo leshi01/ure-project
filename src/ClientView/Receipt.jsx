@@ -2,36 +2,33 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const useStyles = makeStyles({
-    tableContainer: {
-      maxWidth: 600,
-      margin: 'auto',
-      marginTop: 50,
-    },
-    title: {
-      textAlign: 'center',
-      marginBottom: 20,
-    },
-    totalRow: {
-      fontWeight: 'bold',
-    },
+  Paper: {
+    maxWidth: "95%",
+    margin: 'auto',
+    marginTop: 10,
+  },
+  title: {
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  totalRow: {
+    fontWeight: 'bold',
+  },
 });
 
-
 function Receipt({receiptElements}){
-    const classes = useStyles();
+  const classes = useStyles();
 
-  
-    let total = 0;
+  let total = 0;
 
-    receiptElements.map((element) => {
-        total += element.totalPrice;
-    })
+  receiptElements.map((element) => {
+    total += element.totalPrice;
+  })
 
-  
-    return (
-      <TableContainer component={Paper} className={classes.tableContainer}>
+  return (
+    <div className='receipt-div'>
+      <Paper elevation={15}  className={classes.Paper}>
         <Typography variant="h5" className={classes.title}>
           Online Receipt
         </Typography>
@@ -59,8 +56,9 @@ function Receipt({receiptElements}){
             </TableRow>
           </TableBody>
         </Table>
-      </TableContainer>
-    );
-  };
-  
-  export default Receipt;
+      </Paper>
+    </div>
+  );
+};
+
+export default Receipt;
