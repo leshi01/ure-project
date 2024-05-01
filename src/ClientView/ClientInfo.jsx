@@ -12,6 +12,7 @@ function ClientInfo(){
                 flexWrap: 'wrap',
                 '& > :not(style)': {
                 m: 1,
+                backgroundColor:"#76876f",
                 width: "30%",
                 height: 500,
                 top: 100,
@@ -36,6 +37,7 @@ function ClientInfo(){
                     id="filled-required"
                     label="Name"
                     variant="filled"
+                    sx={{backgroundColor: "#edecec"}}
                 />
                 <br></br>
                 <TextField
@@ -43,6 +45,7 @@ function ClientInfo(){
                     id="filled-required"
                     label="Table number"
                     variant="filled"
+                    sx={{backgroundColor: "#edecec"}}
                 />
                 <br></br>
                 <TextField
@@ -52,12 +55,14 @@ function ClientInfo(){
                     type="number"
                     variant="filled"
                     inputProps={{ min: 0 }}
+                    sx={{backgroundColor: "#edecec"}}
                 />
                 <br></br>
                 <TextField
                     id="filled-helperText"
                     label="Description"
                     variant="filled"
+                    sx={{backgroundColor: "#edecec"}}
                 />
             </div>  
                 

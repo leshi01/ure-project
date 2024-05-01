@@ -11,14 +11,15 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import CloseIcon from '@mui/icons-material/Close';
 import Receipt from './Receipt';
+import OrderConfirmation from './OrderConfirmation';
 
 
 
 function Cart({totalItems, setTotalItems, elements, handlesetElements}){
 
     const [receiptElements, setReceiptElements] = React.useState([]);
-
     const [showAlert, setShowAlert] = useState(false);
+    const [showOrderConfirm, setShowOrderConfirm] = useState(false);
     const [showReceipt, setshowReceipt] = useState(false);
 
 
@@ -66,6 +67,14 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
         );
     }
 
+    const doOrder = () => {
+        updateReceipt();
+        setshowReceipt(true);
+        setTimeout(() => {
+            emptyCartElements();
+        }, 100);
+    }
+
     const handleOrder = () =>{
         if(totalItems == 0){
             setShowAlert(true);
@@ -73,11 +82,7 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
             setShowAlert(false);
             }, 5000);
         }else{
-            updateReceipt();
-            setshowReceipt(true);
-            setTimeout(() => {
-                emptyCartElements();
-            }, 100);
+            setShowOrderConfirm(true);
         }
     }
 
@@ -85,19 +90,19 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
 
         <>
             {showAlert && displayWarningAlert()}
+            {showOrderConfirm && <OrderConfirmation showOrderConfirm={showOrderConfirm} setShowOrderConfirm={setShowOrderConfirm} doOrder={doOrder}/>}
             
-
-        
             <Box sx={{
                     display: 'flex',
                     flexWrap: 'wrap',
                     '& > :not(style)': {
                     m: 1,
                     width: "30%",
-                    height: 635,
+                    height: 565,
                     top: 50,
                     position: 'fixed',
                     fontFamily: "'Times New Roman', Times, serif",
+                    backgroundColor:"#76876f",
                     },
                 }}
             >

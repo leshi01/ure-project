@@ -17,18 +17,17 @@
 
 
 .chose-category{
-  display: flex;
-  text-align: center;
   justify-content: space-between;
   position: fixed;
   top: 5px;
   width: 110%;
-  left: -5%;
+  left: 0;
   background-color: transparent;
   border: none;
   z-index: 999999;
   align-items: center;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.61);
+  backdrop-filter: blur(3px);
 
 }
 
@@ -37,17 +36,13 @@
   padding: 0;
   margin: 0;
   display: flex;
-
-}
-
-.horizontal-nav li {
-
+  margin-left: 80px;
 }
 
 .horizontal-nav button {
   padding: 5px 20px;
   margin-right: 40px; 
-
+  color: #edecec;
   border: none;
   background: none;
   cursor: pointer;
@@ -61,12 +56,6 @@
 
 
 }
-
-.horizontal-nav button.active {
-  font-weight: bold; 
-  
-}
-
 
 
 .cart-container{
@@ -135,6 +124,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+
 }
 
 .data-grid{
@@ -148,5 +138,5 @@
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9999;
+  z-index: 9999999;
 }
