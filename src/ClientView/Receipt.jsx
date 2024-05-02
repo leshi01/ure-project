@@ -1,4 +1,4 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@material-ui/core';
+import { Paper, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@material-ui/core';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -23,7 +23,7 @@ function Receipt({receiptElements}){
   let total = 0;
 
   receiptElements.map((element) => {
-    total += element.totalPrice;
+    total += element.totalPrice * element.count;
   })
 
   return (

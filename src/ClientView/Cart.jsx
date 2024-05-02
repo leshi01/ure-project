@@ -33,6 +33,7 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
     const handleDelete = (index, element) => {
         handlesetElements(index);
         
+        
         if(totalItems > 0){
             setTotalItems(totalItems-element.count);
         }
@@ -72,7 +73,7 @@ function Cart({totalItems, setTotalItems, elements, handlesetElements}){
         setshowReceipt(true);
         setTimeout(() => {
             emptyCartElements();
-        }, 100);
+        }, 10);
     }
 
     const handleOrder = () =>{

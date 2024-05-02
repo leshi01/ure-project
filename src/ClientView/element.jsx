@@ -51,13 +51,7 @@ function Element({name, price, description, updateTotalItems, elements}){
     };
 
     return(
-        <Paper elevation={15} sx={{
-                        position: "relative",
-                        left:"85%",
-                        top: 70,
-                        marginBottom: 10,
-                        width:"50%",
-                    }}>
+        <Paper elevation={15} sx={{ position: "relative", left:"85%", top: 70, marginBottom: 10, width:"50%" }}>
             <Card className='element-component' variant="outlined" sx={{maxWidth: "100%", backgroundColor:"#d3d3d3" }} >
                 <Box sx={{ p: 2 }}>
                     <Stack direction="row" justifyContent="space-between" alignItems="center">

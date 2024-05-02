@@ -26,7 +26,6 @@ function CView({menuItems}){
 
     const handleCategory = (event) => {
         setCateg(event.target.value);
-        console.log(categ);
     };
 
     return(
