@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import SignIn from './SignIn';
 import Data from './Data';
@@ -28,7 +28,9 @@ function App() {
 
   return (
       <div className='main-page'>
+        
         <Routes>
+          <Route path="/" element={<SignIn userLogIn={userLogIn} />} />
           <Route path="/loginPage" element={<SignIn userLogIn={userLogIn} />} />
           <Route path="/cview" element={<CView menuItems={menuItems} />} />
           <Route path="/oview/*" element={<OView menuItems={menuItems} menuChange={menuChange} goToLoginPage={goToLoginPage}/>} />
