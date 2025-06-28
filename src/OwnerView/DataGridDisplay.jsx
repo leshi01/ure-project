@@ -6,6 +6,7 @@ import Agreement from './Agreement';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import IconButton from '@mui/material/IconButton';
 import { GridRowModes, DataGrid, GridToolbarContainer, GridActionsCellItem, GridRowEditStopReasons, } from '@mui/x-data-grid';
+import { saveMenuData, exportMenuData, importMenuData, resetMenuData } from '../utils/dataManager';
 
 
 function DataGridDisplay({ menuItems, menuChange }) {
@@ -13,6 +14,13 @@ function DataGridDisplay({ menuItems, menuChange }) {
     const [open, setOpen] = React.useState(false);
     const [deleteId, setDeleteId] = React.useState("");
     const [rowModesModel, setRowModesModel] = React.useState({});
+
+    // Function to update rows and save to localStorage
+    const updateRowsAndSave = (newRows) => {
+        setRows(newRows);
+        saveMenuData(newRows);
+        menuChange(newRows);
+    };
 
 
     const handleOpen = (id) => {
@@ -23,7 +31,8 @@ function DataGridDisplay({ menuItems, menuChange }) {
 
     const handleAdd = () => {
         const id = rows.length + 1;
-        setRows([...rows, { id, name: 'new', price: 0, description: 'No', category: 'All' }]);
+        const newRows = [...rows, { id, name: 'new', price: 0, description: 'No', category: 'All' }];
+        updateRowsAndSave(newRows);
     };
 
     const handleDelete = () => {
@@ -36,13 +45,14 @@ function DataGridDisplay({ menuItems, menuChange }) {
           return row;
         });
       
-        setRows(updatedRowsId);
+        updateRowsAndSave(updatedRowsId);
         handleClose();
     };
 
     const processRowUpdate = (newRow) => {
         const updatedRow = { ...newRow, isNew: false };
-        setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
+        const newRows = rows.map((row) => (row.id === newRow.id ? updatedRow : row));
+        updateRowsAndSave(newRows);
         return updatedRow;
     };
     
@@ -50,10 +60,36 @@ function DataGridDisplay({ menuItems, menuChange }) {
         setRowModesModel(newRowModesModel);
     };
 
+    const handleExport = () => {
+        exportMenuData(rows);
+    };
 
-    React.useEffect(() => {
-        menuChange(rows);
-    }, [rows, menuChange]);
+    const handleImport = () => {
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.json';
+        fileInput.onchange = async (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                try {
+                    const importedData = await importMenuData(file);
+                    updateRowsAndSave(importedData);
+                    alert('Data imported successfully!');
+                } catch (error) {
+                    alert('Error importing data: ' + error.message);
+                }
+            }
+        };
+        fileInput.click();
+    };
+
+    const handleReset = () => {
+        if (window.confirm('Are you sure you want to reset all data to the original state? This cannot be undone.')) {
+            const originalData = resetMenuData();
+            updateRowsAndSave(originalData);
+            alert('Data has been reset to original state.');
+        }
+    };
 
     const columnsWithActions = [
         { field: 'id', headerName: 'ID', width: 90 },
@@ -74,9 +110,20 @@ function DataGridDisplay({ menuItems, menuChange }) {
         <div className='data-grid'>
             <Agreement open={open} handleClose={handleClose} handleDelete={handleDelete}/>
             <Box sx={{ height: 500, width: 1000 }}>
-                <Button color="primary" startIcon={<AddIcon />} onClick={handleAdd}>
-                    Add record
-                </Button>
+                <Box sx={{ display: 'flex', gap: 2, marginBottom: 2 }}>
+                    <Button color="primary" startIcon={<AddIcon />} onClick={handleAdd}>
+                        Add record
+                    </Button>
+                    <Button variant="outlined" onClick={handleExport}>
+                        Export Data
+                    </Button>
+                    <Button variant="outlined" onClick={handleImport}>
+                        Import Data
+                    </Button>
+                    <Button variant="outlined" color="warning" onClick={handleReset}>
+                        Reset to Original
+                    </Button>
+                </Box>
                 <DataGrid
                     rows={rows}
                     columns={columnsWithActions}
